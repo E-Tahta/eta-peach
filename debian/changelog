@@ -1,3 +1,9 @@
+eta-peach (0.2.1) unstable; urgency=medium
+
+  * Fix Pre-Depends wrong package name
+
+ -- Yunusemre Şentürk <yunusemre.senturk@pardus.org.tr>  Tue, 03 Oct 2017 11:32:17 +0300
+
 eta-peach (0.2.0) unstable; urgency=medium
 
   * Initial release.
