@@ -8,7 +8,7 @@ Homepage: http://pardus.org.tr
 
 Package: eta-peach
 Architecture: amd64
-Pre-Depends: kwin, plasma-desktop
+Pre-Depends: kde-window-manager, plasma-desktop
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: ETAP Şeftali Kwin Servisi
  Çalışan uygulamaları ve  açık pencerleri hızlı kontrol etmeye yarayan 
