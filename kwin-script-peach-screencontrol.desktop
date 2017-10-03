@@ -1,0 +1,20 @@
+[Desktop Entry]
+Name=peach
+Name[tr]=şeftali
+Comment=It is a kwin script that controlles all opened windows from a wide panel
+Comment[tr]=Açılan pencereleri geniş bir panelden kontrol eden bir kwin servisi
+Icon=/usr/share/eta/eta-peach/peach.svg
+
+X-Plasma-API=declarativescript
+X-Plasma-MainScript=ui/main.qml
+X-Plasma-DefaultSize=100,100
+
+X-KDE-PluginInfo-Author=Yunusemre Senturk
+X-KDE-PluginInfo-Email=yunusemre.senturk@pardus.org.tr
+X-KDE-PluginInfo-Name=peach-screencontrol
+X-KDE-PluginInfo-Version=1.0
+
+X-KDE-PluginInfo-Depends=
+X-KDE-PluginInfo-License=GPL
+X-KDE-ServiceTypes=KWin/Script,Plasma/Applet
+Type=Service
