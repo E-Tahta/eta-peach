@@ -2,12 +2,14 @@ Source: eta-peach
 Section: utils
 Priority: optional
 Maintainer: Yunusemre Şentürk <yunusemre.senturk@pardus.org.tr>
-Build-Depends: debhelper (>= 9), libc6, libgcc1, libgl1-mesa-glx | libgl1, libqt5core5a, libqt5gui5, libqt5network5, libqt5widgets5, libstdc++6
+Build-Depends: debhelper (>= 9),
 Standards-Version: 3.9.6
 Homepage: http://pardus.org.tr
 
 Package: eta-peach
 Architecture: amd64
-Depends: ${shlibs:Depends}, ${misc:Depends}, libqt5svg5
-Description: ETAP Sanal Kalem
- Ekrana çizim yapmak için rahat kullanımlı, hızlı bir araç.
+Pre-Depends: kwin, plasma-desktop
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: ETAP Şeftali Kwin Servisi
+ Çalışan uygulamaları ve  açık pencerleri hızlı kontrol etmeye yarayan 
+ bir betik.
