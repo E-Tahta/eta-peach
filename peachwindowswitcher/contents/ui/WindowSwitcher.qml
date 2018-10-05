@@ -1,25 +1,22 @@
 import QtQuick 1.1
-import org.kde.plasma.core 0.1 as PlasmaCore
-import org.kde.plasma.components 0.1 as Plasma
-import org.kde.plasma.graphicswidgets 0.1 as PlasmaWidgets
 import org.kde.kwin 0.1 as KWin
 
 Item {
-	anchors.fill: parent	
+    anchors.fill: parent
     property int cellSize : 250
-	property int columns
-	property int rows
-	property int thumbsInside
-	property int tempCellSize
-	
-	width: parent.width
-	height: parent.height
-	
+    property int columns
+    property int rows
+    property int thumbsInside
+    property int tempCellSize
+
+    width: parent.width
+    height: parent.height
+
     ListView {
         id: grid
-        clip: false
-		width: parent.width
-		height: parent.height
+        clip: true
+        width: parent.width
+        height: parent.height
         spacing : 10
         orientation: ListView.Horizontal
         model: windowThumbs
@@ -28,15 +25,36 @@ Item {
             flickableDirection: Flickable.VerticalFlick
             property int clientWidth: client.width
             property int clientHeight: client.height
-            property real ratio : clientWidth / clientHeight
+            property real ratio : 4 / 3
             property int maxWidth : item.height
             property int maxHeight : item.height
             onFlickingVerticallyChanged:  client.closeWindow()
-            width: cellSize
+            width: cellSize * 4 / 3
             height: cellSize
             Item {
                 id: item
                 anchors.fill:parent
+                Rectangle {
+                    anchors.centerIn: parent
+                    width: itemCaption.width + 6
+                    height: itemCaption.height + 6
+                    radius: 3
+                    color: "#FF6C00"
+                }
+
+                Text {
+                    id: itemCaption
+                    anchors.centerIn: parent
+                    width: 160
+                    color: "white"
+                    text: client.caption
+                    font.bold: true
+                    font.pointSize: 11
+                    wrapMode: Text.WordWrap
+                    verticalAlignment: Text.AlignVCenter
+                    horizontalAlignment: Text.AlignHCenter
+                }
+
                 KWin.ThumbnailItem {
                     id: thumb
                     anchors {

@@ -1,9 +1,6 @@
 import QtQuick 1.1
 import Qt 4.7
 import org.kde.plasma.core 0.1 as PlasmaCore
-import org.kde.plasma.components 0.1 as Plasma
-import org.kde.plasma.graphicswidgets 0.1 as PlasmaWidgets
-import org.kde.qtextracomponents 0.1 as QtExtra
 
 Item {
     id: miniscreen
@@ -13,22 +10,24 @@ Item {
     property int screenHeight: 0
     property int dashHeight: 0
 
+    width: screenWidth - 12
+
     Item {
         id: viewsContainer
-        width: screenWidth
+        width: miniscreen.width
         height: dashHeight + closeAllSection.height
         focus: true
         anchors.rightMargin: 0
 
         Item {
             id:closeAllSection
-            width: screenWidth
+            width: viewsContainer.width
             height: dashHeight / 5
             anchors.top: viewsContainer.top
 
             Rectangle {
                 id:closeAllBackground
-                color: "#f55858"
+                color: "#C2352A"
                 anchors.fill: closeAllSection
                 Text {
                     id:closeTxt
@@ -37,7 +36,7 @@ Item {
                     font.pointSize: 9
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
-                    color: "#ffffff"
+                    color: "#FAFAFA"
                     anchors.centerIn: closeAllBackground
                 }
                 MouseArea {
@@ -45,19 +44,19 @@ Item {
                     anchors.fill:closeAllBackground
                     onPressed: {
                         closeTxt.color = maCloseArea.containsMouse ?
-                                    "#cccccc" : "#ffffff"
+                                    "#cccccc" : "#FAFAFA"
                         closeAllBackground.color = maCloseArea.containsMouse ?
-                                    "#f39595" : "#f55858"
+                                    "#f39595" : "#C2352A"
                     }
                     onPressAndHold: {
                         closeTxt.color = maCloseArea.containsMouse ?
-                                    "#cccccc" : "#ffffff"
+                                    "#cccccc" : "#FAFAFA"
                         closeAllBackground.color = maCloseArea.containsMouse ?
-                                    "#f39595" : "#f55858"
+                                    "#f39595" : "#C2352A"
                     }
                     onReleased: {
-                        closeTxt.color = "#ffffff";
-                        closeAllBackground.color = "#f55858";
+                        closeTxt.color = "#FAFAFA";
+                        closeAllBackground.color = "#C2352A";
                         var i = 0;
                         for (i = 0; i < windowThumbs.count; i++) {
                             windowThumbs.get(i).client.closeWindow()
@@ -82,8 +81,9 @@ Item {
             Image {
                 id:arrow
                 width: 55
-                height: dashHeight-10
-                source: "../images/scalable/3arrow.png"
+                height: dashHeight - 10
+                source: "../images/3arrow.png"
+                smooth: true
                 anchors {
                     verticalCenter: parent.verticalCenter
                     horizontalCenter: parent.horizontalCenter
@@ -108,7 +108,7 @@ Item {
     }
     PlasmaCore.Dialog {
         id: miniScreenControlContent
-        x: 0
+        x: 269
         windowFlags: Qt.Popup
         visible: false
         mainItem: viewsContainer
@@ -140,14 +140,12 @@ Item {
     }
     Component.onCompleted: {
         var screen = workspace.clientArea(KWin.MaximizedArea, workspace.activeScreen, workspace.currentDesktop);
-        screenWidth = screen.width;
-        screenHeight = screen.height;
-        dashHeight = screenHeight *23/100;
-        miniScreenControlContent.y = screenHeight *77/100;
-        miniScreenControlContent.x = 0;
-        miniScreenControlContent.visible = false;
-        registerShortcut("Run Peach", "", "Meta+Shift+Right", function() {
-            toggleBoth();
-        });
+        screenWidth = 1650
+        screenHeight = screen.height
+        dashHeight = screenHeight / 4
+        miniScreenControlContent.y = screenHeight * 77 / 100
+        miniScreenControlContent.x = screenWidth * 29 / 100
+        miniScreenControlContent.visible = false
+        registerShortcut("Run Peach", "", "Meta+Shift+Right", function() {toggleBoth()})
     }
 }
